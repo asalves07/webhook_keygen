@@ -1,0 +1,22 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  user: asalves
+  password: 123
+  host: localhost
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: rails_studies_development
+
+test:
+  <<: *default
+  database: rails_studies_test
+
+production:
+  <<: *default
+  database: rails_studies_production
+  username: rails_studies
+  password: <%= ENV['RAILS_STUDIES_DATABASE_PASSWORD'] %>
